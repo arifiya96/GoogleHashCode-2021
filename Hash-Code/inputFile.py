@@ -51,6 +51,12 @@ class Intersections():
         self.name = name
         self.counter = 0
         self.isgreen = False
+        self.smth = 0
+
+class commonIntersections():
+    def __init__(self, name):
+        self.name = name
+
 
 
 def isgreen(numberOfIntersections):
@@ -104,10 +110,22 @@ for i in carsInfo:
 
 listOfIntersections = isgreen(numberOfIntersections)
 
+
+
+for i in carsInfo:
+    for j in i.streets:
+        for n in streetInfo:
+            if j == n.name:
+                start = n.start
+                for q in listOfIntersections:
+                    if str(start) == q.name:
+                        q.smth += 1
+
 for i in listOfIntersections: #range(numberOfIntersections):
-    print(i.counter) 
-    print(i.isgreen)
-    
+    # print(i.counter) 
+    # print(i.isgreen)
+    print(i.smth)
+
 
 # print(streetInfo)
 # for i in range(intersections):
