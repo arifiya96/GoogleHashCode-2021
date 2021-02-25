@@ -112,14 +112,22 @@ listOfIntersections = isgreen(numberOfIntersections)
 
 
 
+''' issue: 
+apart from the fact that we've got 4 inner loops, 
+we can't seem to get the program to show number of common intersections for athens street'''
+
+
 for i in carsInfo:
+    print(i.streets)
     for j in i.streets:
+        print(j.name)
         for n in streetInfo:
             if j == n.name:
                 start = n.start
                 for q in listOfIntersections:
                     if str(start) == q.name:
                         q.smth += 1
+
 
 for i in listOfIntersections: #range(numberOfIntersections):
     # print(i.counter) 
