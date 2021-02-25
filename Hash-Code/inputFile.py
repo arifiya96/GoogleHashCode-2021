@@ -5,12 +5,22 @@ class Street():
         self.start = start
         self.end = end
         self.name = name
-        self.L = L
+        self.L = int(L)
 
 class Car():
     def __init__(self, numStreets, streets):
         self.numStreets= numStreets
         self.streets = streets # list of streets
+
+    def pathLength(self, streets):
+        time = 0
+        for index in range(1, len(self.streets)):
+            s = self.streets[index]
+            for street in streetInfo: 
+                if s == street.name:
+                    time += street.L
+        self.time = time
+        self.sparetime = simulationtime - time
 
 def streetIn(streetList):
     streetInfo = []
@@ -36,6 +46,9 @@ def carsIn(list_):
         carInfo.append(name)
     return carInfo
 
+def isgreen():
+    pass
+
 file = open("a.txt")
 
 data = file.readlines() 
@@ -45,12 +58,15 @@ listInfo = []
 
 intersections = 0
 cars = 0
+simulationtime = 0
 
 for index in range(len(data)):
     line = data[index]
     line = line.strip("\n")
     if index == 0:
         listInfo = line.split(" ")
+        simulationtime = int(listInfo[0])
+        numberOfIntersections = int(listInfo[1])
         intersections = int(listInfo[2])
         cars = int(listInfo[3])
         bonus = int(listInfo[4])
@@ -62,19 +78,22 @@ for index in range(len(data)):
 streetInfo = streetIn(intersectionList)
 carsInfo = carsIn(carsList)
 
+timesList = []
+for i in carsInfo:
+    i.pathLength(i.streets)
+    timesList.append(i.sparetime)
 
-print(streetInfo)
-for i in range(intersections):
-    print(streetInfo[i].name)
-
-print(carsInfo)
-for i in range(cars):
-    print(carsInfo[i].streets)
-
+for index in range(len(timesList)): 
+    print(timesList[index])
 
 
+# print(streetInfo)
+# for i in range(intersections):
+#     print(streetInfo[i].name)
 
-    
+# print(carsInfo)
+# for i in range(cars):
+#     print(carsInfo[i].streets)
 
 # # listInfo = (firstLine.strip("\n")).split(" ")
 # print(listInfo) # DEBUGGING
@@ -85,3 +104,5 @@ for i in range(cars):
 # print(carsList)
 
 file.close()
+
+print("done")
