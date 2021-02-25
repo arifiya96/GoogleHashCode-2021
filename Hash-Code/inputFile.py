@@ -2,8 +2,8 @@
 
 class Street():
     def __init__(self, start, end, name, L):
-        self.start = start
-        self.end = end
+        self.start = int(start)
+        self.end = int(end)
         self.name = name
         self.L = int(L)
 
@@ -46,9 +46,25 @@ def carsIn(list_):
         carInfo.append(name)
     return carInfo
 
-def isgreen():
-    pass
+class Intersections():
+    def __init__(self, name):
+        self.name = name
+        self.counter = 0
+        self.isgreen = False
 
+
+def isgreen(numberOfIntersections):
+    intersectionList = []
+    for i in range(numberOfIntersections):
+        a = Intersections(str(i))
+        intersectionList.append(a)
+        for street in range(len(streetInfo)):
+            if streetInfo[street].end == i:
+                a.counter += 1 
+        if a.counter == 1:
+            a.isgreen = True
+    return intersectionList
+    
 file = open("a.txt")
 
 data = file.readlines() 
@@ -56,7 +72,7 @@ intersectionList = []
 carsList = []
 listInfo = []
 
-intersections = 0
+streets= 0
 cars = 0
 simulationtime = 0
 
@@ -67,12 +83,12 @@ for index in range(len(data)):
         listInfo = line.split(" ")
         simulationtime = int(listInfo[0])
         numberOfIntersections = int(listInfo[1])
-        intersections = int(listInfo[2])
+        streets= int(listInfo[2])
         cars = int(listInfo[3])
         bonus = int(listInfo[4])
-    if ( 1 <= index <= intersections):
+    if ( 1 <= index <= streets):
         intersectionList.append(line)
-    if ( intersections < index <= intersections + cars):
+    if ( streets< index <= streets + cars):
         carsList.append(line)
 
 streetInfo = streetIn(intersectionList)
@@ -83,9 +99,15 @@ for i in carsInfo:
     i.pathLength(i.streets)
     timesList.append(i.sparetime)
 
-for index in range(len(timesList)): 
-    print(timesList[index])
+# for index in range(len(timesList)): 
+#     print(timesList[index])
 
+listOfIntersections = isgreen(numberOfIntersections)
+
+for i in listOfIntersections: #range(numberOfIntersections):
+    print(i.counter) 
+    print(i.isgreen)
+    
 
 # print(streetInfo)
 # for i in range(intersections):
