@@ -57,8 +57,6 @@ class commonIntersections():
     def __init__(self, name):
         self.name = name
 
-
-
 def isgreen(numberOfIntersections):
     intersectionList = []
     for i in range(numberOfIntersections):
@@ -114,8 +112,8 @@ listOfIntersections = isgreen(numberOfIntersections)
 
 ''' issue: 
 apart from the fact that we've got 4 inner loops, 
-we can't seem to get the program to show number of common intersections for athens street'''
-
+we can't seem to get the program to show number of common intersections for athens street
+'''
 
 for i in carsInfo:
     print(i.streets)
@@ -128,6 +126,8 @@ for i in carsInfo:
                     if str(start) == q.name:
                         q.smth += 1
 
+
+''' DEBUGGING'''
 
 for i in listOfIntersections: #range(numberOfIntersections):
     # print(i.counter) 
