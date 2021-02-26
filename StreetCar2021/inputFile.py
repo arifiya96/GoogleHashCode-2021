@@ -135,22 +135,6 @@ for i in listOfIntersections: #range(numberOfIntersections):
     print(i.smth)
 
 
-# print(streetInfo)
-# for i in range(intersections):
-#     print(streetInfo[i].name)
-
-# print(carsInfo)
-# for i in range(cars):
-#     print(carsInfo[i].streets)
-
-# # listInfo = (firstLine.strip("\n")).split(" ")
-# print(listInfo) # DEBUGGING
-# print(intersections) # DEBUGGING
-# print(cars) # DEBUGGING
-# print("---")
-# print(intersectionList)
-# print(carsList)
-
 file.close()
 
 print("done")
